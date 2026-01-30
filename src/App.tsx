@@ -5,19 +5,19 @@ import Blog from "./Pages/Blog/Blog";
 import BlogDetails from "./Pages/BlogDetails/BlogDetails";
 import Home from "./Pages/Home/Home";
 import NotFound from "./Pages/NotFound/NotFound";
-
 function App() {
   const routes = createBrowserRouter([
     {
-      path: "",
+      path: "/",
       element: <Layout />,
       children: [
         { index: true, element: <Home /> },
         {
-          path: "/blog",
+          path: "blog",
           element: <Blog />,
           children: [{ path: ":slug", element: <BlogDetails /> }],
         },
+        { path: "/about", element: <div>من نحن</div> },
         { path: "*", element: <NotFound /> },
       ],
     },
