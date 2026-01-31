@@ -2,13 +2,13 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  className?: string;
+  className: string;
   icon?: ReactNode;
 }
 
 export default function SharedButton({
   children,
-  className,
+  className = "",
   icon,
   ...props
 }: ButtonProps) {
