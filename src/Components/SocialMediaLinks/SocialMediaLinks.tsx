@@ -4,6 +4,9 @@ interface SocialMediaLinksProps {
   svgPath: string;
   fillRule?: "nonzero" | "evenodd" | "inherit";
   clipRule?: "nonzero" | "evenodd" | "inherit";
+  strokeLinecap?: "round" | "butt" | "square";
+  strokeLinejoin?: "round" | "bevel" | "miter";
+  strokeWidth?: number | string;
 }
 export default function SocialMediaLinks({
   name,
