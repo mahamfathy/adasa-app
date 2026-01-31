@@ -6,7 +6,9 @@ export default function Layout() {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <main className="grow pt-20">
+        <Outlet />
+      </main>
       <Footer />
     </>
   );
