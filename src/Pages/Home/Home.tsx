@@ -1,9 +1,10 @@
 import { FaFolderOpen, FaNewspaper, FaPenNib, FaUsers } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 import data from "../../../data.json";
 import GlassCard from "../../Components/GlassCard/GlassCard";
 import MainSection from "../../Components/MainSection/MainSection";
 export default function Home() {
-  console.log(data);
+  console.log("data:", data);
   return (
     <>
       <MainSection
@@ -12,11 +13,7 @@ export default function Home() {
         paragraph="انغمس في أسرار المحترفين ونصائح عملية لتطوير مهاراتك في التصوير."
       >
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-          <a
-            className="btn-primary inline-flex items-center justify-center gap-2 group"
-            href="/blog"
-            data-discover="true"
-          >
+          <NavLink className="btn-primary group" to="/blog">
             <span>استكشف المقالات</span>
             <svg
               className="w-5 h-5 group-hover:-translate-x-1 transition-transform rotate-180"
@@ -31,27 +28,24 @@ export default function Home() {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </a>
-          <a
-            className="btn-secondary inline-flex items-center justify-center gap-2"
-            href="/about"
-            data-discover="true"
-          >
+          </NavLink>
+
+          <NavLink className="btn-secondary group" to="/about">
             <svg
-              className="w-5 h-5"
+              className="w-5 h-5 transition-colors"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
             >
               <path
+                strokeWidth={2}
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2}
                 d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
             <span>اعرف المزيد</span>
-          </a>
+          </NavLink>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
           <GlassCard
