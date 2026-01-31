@@ -128,7 +128,7 @@ export default function Footer() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-sm text-neutral-600">
-                © 2026 عدسة. صنع بكل{" "}
+                © 2026 عدسة. صنع بكل{" 🧡 "}
                 <i className="fa-solid fa-heart text-orange-500" /> جميع الحقوق
                 محفوظة.
               </p>
