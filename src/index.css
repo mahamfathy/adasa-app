@@ -1,19 +1,58 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
 
 html {
   direction: rtl;
 }
+
 @theme {
+  --font-tajawal: "Tajawal", system-ui, -apple-system, sans-serif;
+}
+@layer base {
+  *,
+  ::before,
+  ::after {
+    font-family: var(--font-tajawal);
+    box-sizing: border-box;
+    border-width: 0px;
+    border-style: solid;
+    border-color: initial;
+    border-image: initial;
+    margin: 0px;
+    padding: 0px;
+  }
+  body {
+    font-family: var(--font-tajawal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 @layer components {
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-orange-300;
+    @apply bg-clip-text text-transparent bg-linear-to-r from-orange-500 to-orange-300;
   }
 
   .glass-card {
     @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
   }
+
+  .btn-primary,
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 
+           text-sm font-medium rounded-4xl transition-all  duration-300 
+           active:scale-95 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply bg-linear-to-r from-[#f97316] to-[#ea580c] text-white 
+           shadow-lg shadow-orange-500/20 hover:-translate-y-0.5;
+  }
+  .btn-secondary {
+    @apply bg-[#161616] border border-[#262626] text-neutral-400 
+           hover:text-[#f97316] hover:bg-[#f973161a] hover:border-[#f97316];
+  }
 }
+
 .section-label:before {
   content: "";
   height: calc(var(--spacing) * 1.5);
