@@ -1,6 +1,7 @@
 import { FaFolderOpen, FaNewspaper, FaPenNib, FaUsers } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import data from "../../../data.json";
+import FeaturedBlogs from "../../Components/FeaturedBlogs/FeaturedBlogs";
 import GlassCard from "../../Components/GlassCard/GlassCard";
 import MainSection from "../../Components/MainSection/MainSection";
 export default function Home() {
@@ -79,6 +80,7 @@ export default function Home() {
           />
         </div>
       </MainSection>
+      <FeaturedBlogs sectionLabel="مميز" />
     </>
   );
 }
