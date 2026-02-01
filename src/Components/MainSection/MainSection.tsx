@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { FaNewspaper } from "react-icons/fa6";
+import SectionLabel from "../SectionLabel/SectionLabel";
 
 interface MainSectionProps {
   heading: ReactNode;
@@ -27,19 +27,7 @@ export default function MainSection({
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
           <div className="text-center max-w-4xl mx-auto">
-            <div className="section-label inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 mb-8 animate-fade-in">
-              {sectionLabel === "مدونتنا" ? (
-                <FaNewspaper className="text-orange-500 text-sm" />
-              ) : (
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-                </span>
-              )}
-              <span className="text-sm font-medium text-orange-400">
-                {sectionLabel}
-              </span>
-            </div>
+            <SectionLabel sectionLabel={sectionLabel} />
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
               <span className="gradient-text">{heading}</span>
