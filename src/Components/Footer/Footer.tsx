@@ -1,9 +1,9 @@
 import type React from "react";
 import { NavLink } from "react-router-dom";
 import data from "../../../data.json";
-import RenderNavLinks from "../../Components/RenderNavLinks/RenderNavLinks";
-import SharedButton from "../../Components/SharedButton/SharedButton";
-import SocialMediaLinks from "../../Components/SocialMediaLinks/SocialMediaLinks";
+import RenderNavLinks from "../RenderNavLinks/RenderNavLinks";
+import SharedButton from "../SharedButton/SharedButton";
+import SocialMediaLinks from "../SocialMediaLinks/SocialMediaLinks";
 interface Category {
   color: string;
   count: number;
