@@ -1,12 +1,11 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+@theme {
+  --font-tajawal: "Tajawal", system-ui, -apple-system, sans-serif;
+}
 
 html {
   direction: rtl;
-}
-
-@theme {
-  --font-tajawal: "Tajawal", system-ui, -apple-system, sans-serif;
 }
 @layer base {
   *,
@@ -14,17 +13,13 @@ html {
   ::after {
     font-family: var(--font-tajawal);
     box-sizing: border-box;
-    border-width: 0px;
-    border-style: solid;
-    border-color: initial;
-    border-image: initial;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
   }
+
   body {
     font-family: var(--font-tajawal);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @apply antialiased bg-[#0a0a0a] text-white;
   }
 }
 @layer components {
