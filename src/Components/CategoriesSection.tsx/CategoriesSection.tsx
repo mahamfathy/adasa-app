@@ -42,7 +42,7 @@ export default function CategoriesSection({
       <section className="py-24 bg-[#111111] relative border-y border-[#262626]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            {<SectionLabel text="التصفيات" />}
+            {<SectionLabel sectionLabel="التصفيات" />}
             <h2 className="text-5xl leading-tight font-bold text-white">
               استكشف حسب الموضوع
             </h2>
