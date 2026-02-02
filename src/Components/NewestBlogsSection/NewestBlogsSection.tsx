@@ -22,7 +22,7 @@ export default function NewestBlogsSection({ data }: { data: Data["posts"] }) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
           <div>
-            <SectionLabel text="الأحدث" />
+            <SectionLabel sectionLabel="الأحدث" />
             <h2 className="text-5xl leading-tight font-bold text-white">
               أحدث المقالات
             </h2>
