@@ -3,10 +3,8 @@ import { NavLink } from "react-router-dom";
 import SectionLabel from "../SectionLabel/SectionLabel";
 
 export default function FeaturedBlogs({
-  sectionLabel,
   children,
 }: {
-  sectionLabel: string;
   children: React.ReactNode;
 }) {
   return (
@@ -16,7 +14,7 @@ export default function FeaturedBlogs({
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
             <div>
-              <SectionLabel sectionLabel={sectionLabel} />
+              <SectionLabel text="مميز" />
               <h2 className="text-5xl leading-tight font-bold text-white">
                 مقالات مختارة
               </h2>
