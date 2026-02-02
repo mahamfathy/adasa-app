@@ -1,11 +1,13 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
-import FeaturedListCard from "../FeaturedListCard/FeaturedListCard";
 import SectionLabel from "../SectionLabel/SectionLabel";
 
 export default function FeaturedBlogs({
   sectionLabel,
+  children,
 }: {
   sectionLabel: string;
+  children: React.ReactNode;
 }) {
   return (
     <>
@@ -43,9 +45,7 @@ export default function FeaturedBlogs({
               </svg>
             </NavLink>
           </div>
-          <div className="space-y-8">
-            <FeaturedListCard />
-          </div>
+          <div className="space-y-8">{children}</div>
         </div>
       </section>
     </>
