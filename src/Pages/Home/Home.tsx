@@ -7,6 +7,7 @@ import FeaturedBlogs from "../../Components/FeaturedBlogsSection/FeaturedBlogsSe
 import FeaturedListCard from "../../Components/FeaturedListCard/FeaturedListCard";
 import GlassCard from "../../Components/GlassCard/GlassCard";
 import MainSection from "../../Components/MainSection/MainSection";
+import NewestBlogsSection from "../../Components/NewestBlogsSection/NewestBlogsSection";
 import type { Data } from "../../Interfaces/data.interface";
 export default function Home() {
   const [data] = useState(blogData as Data);
@@ -84,10 +85,11 @@ export default function Home() {
           />
         </div>
       </MainSection>
-      <FeaturedBlogs sectionLabel="مميز">
+      <FeaturedBlogs>
         <FeaturedListCard data={data.posts} />
       </FeaturedBlogs>
       <CategoriesSection data={data.categories} />
+      <NewestBlogsSection data={data.posts} />
     </>
   );
 }
