@@ -15,7 +15,6 @@ export default function Home() {
   return (
     <>
       <MainSection
-        sectionLabel="مرحبا بك في عدسة"
         heading="اكتشف فن التصوير الفوتوغرافي"
         paragraph="انغمس في أسرار المحترفين ونصائح عملية لتطوير مهاراتك في التصوير."
       >
