@@ -8,6 +8,7 @@ import FeaturedListCard from "../../Components/FeaturedListCard/FeaturedListCard
 import GlassCard from "../../Components/GlassCard/GlassCard";
 import MainSection from "../../Components/MainSection/MainSection";
 import NewestBlogsSection from "../../Components/NewestBlogsSection/NewestBlogsSection";
+import NewsSubscribtionSection from "../../Components/NewsSubscribtionSection/NewsSubscribtionSection";
 import type { Data } from "../../Interfaces/data.interface";
 export default function Home() {
   const [data] = useState(blogData as Data);
@@ -90,6 +91,7 @@ export default function Home() {
       </FeaturedBlogs>
       <CategoriesSection data={data.categories} />
       <NewestBlogsSection data={data.posts} />
+      <NewsSubscribtionSection data={data.posts} />
     </>
   );
 }
