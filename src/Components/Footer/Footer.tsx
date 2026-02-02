@@ -1,4 +1,5 @@
 import type React from "react";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { NavLink } from "react-router-dom";
 import data from "../../../data.json";
 import RenderNavLinks from "../RenderNavLinks/RenderNavLinks";
@@ -9,7 +10,21 @@ interface Category {
   count: number;
   name: string;
 }
+type Inputs = {
+  email: string;
+};
 export default function Footer() {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<Inputs>({
+    mode: "all",
+    defaultValues: {
+      email: "",
+    },
+  });
+  const onSubmit: SubmitHandler<Inputs> = (e: Inputs) => console.log(e.email);
   const categories = data.categories;
   const exploreLinks = [
     { name: "الرئيسية", path: "/" },
@@ -109,13 +124,26 @@ export default function Footer() {
               <p className="text-sm text-neutral-500 mb-4">
                 اشترك للحصول على أحدث المقالات والتحديثات.
               </p>
-              <form className="space-y-3">
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-9">
                 <div className="relative">
+                  {" "}
                   <input
+                    {...register("email", {
+                      required: "* البريد الإلكتروني مطلوب",
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: "* عنوان بريد إلكتروني غير صالح",
+                      },
+                    })}
                     placeholder="أدخل بريدك الإلكتروني"
-                    className="w-full px-4 py-3 bg-[#161616] border border-[#262626] rounded-xl text-sm text-white focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all duration-300 placeholder-neutral-600"
+                    className={`w-full px-5 py-4 rounded-xl bg-[#0a0a0a] border ${errors.email ? "border-red-500" : "border-[#262626]"} focus:outline-none focus:border-orange-500/50 text-white placeholder-neutral-500 transition-colors`}
                     type="email"
                   />
+                  {errors.email && (
+                    <p className="text-red-500 text-right text-sm absolute -bottom-6 right-2">
+                      {errors.email.message}
+                    </p>
+                  )}
                 </div>
                 <SharedButton type="submit" className="btn-primary w-full">
                   اشترك
