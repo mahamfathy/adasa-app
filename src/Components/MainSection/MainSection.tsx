@@ -4,13 +4,11 @@ import SectionLabel from "../SectionLabel/SectionLabel";
 interface MainSectionProps {
   heading: ReactNode;
   paragraph: string;
-  sectionLabel: string;
   children?: ReactNode;
 }
 export default function MainSection({
   heading,
   paragraph,
-  sectionLabel,
   children,
 }: MainSectionProps) {
   return (
@@ -27,7 +25,7 @@ export default function MainSection({
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
           <div className="text-center max-w-4xl mx-auto">
-            <SectionLabel sectionLabel={sectionLabel} />
+            <SectionLabel sectionLabel="مرحبا بك في عدسة" />
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-tight">
               <span className="gradient-text">{heading}</span>
