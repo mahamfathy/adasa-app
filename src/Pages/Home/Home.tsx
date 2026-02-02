@@ -1,11 +1,15 @@
+import { useState } from "react";
 import { FaFolderOpen, FaNewspaper, FaPenNib, FaUsers } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
-import data from "../../../data.json";
-import FeaturedBlogs from "../../Components/FeaturedBlogs/FeaturedBlogs";
+import blogData from "../../../data.json";
+import CategoriesSection from "../../Components/CategoriesSection.tsx/CategoriesSection";
+import FeaturedBlogs from "../../Components/FeaturedBlogsSection/FeaturedBlogsSection";
+import FeaturedListCard from "../../Components/FeaturedListCard/FeaturedListCard";
 import GlassCard from "../../Components/GlassCard/GlassCard";
 import MainSection from "../../Components/MainSection/MainSection";
+import type { Data } from "../../Interfaces/data.interface";
 export default function Home() {
-  console.log("data:", data);
+  const [data] = useState(blogData as Data);
   return (
     <>
       <MainSection
@@ -80,7 +84,10 @@ export default function Home() {
           />
         </div>
       </MainSection>
-      <FeaturedBlogs sectionLabel="مميز" />
+      <FeaturedBlogs sectionLabel="مميز">
+        <FeaturedListCard data={data.posts} />
+      </FeaturedBlogs>
+      <CategoriesSection data={data.categories} />
     </>
   );
 }
