@@ -1,25 +1,12 @@
-import { useForm, type SubmitHandler } from "react-hook-form";
 import type { Author, Data } from "../../Interfaces/data.interface";
 import SharedButton from "../SharedButton/SharedButton";
-type Inputs = {
-  email: string;
-};
+import SubmitForm from "../SharedSubmitForm/SharedSubmitForm";
+
 export default function NewsSubscribtionSection({
   data,
 }: {
   data: Data["posts"];
 }) {
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<Inputs>({
-    mode: "all",
-    defaultValues: {
-      email: "",
-    },
-  });
-  const onSubmit: SubmitHandler<Inputs> = (e: Inputs) => console.log(e.email);
   const author = data.map((blog) => blog.author);
   return (
     <>
@@ -49,38 +36,15 @@ export default function NewsSubscribtionSection({
               احصل على نصائح التصوير الحصرية ودروس جديدة مباشرة في بريدك
               الإلكتروني
             </p>
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-10 items-start" // أضفنا items-start لضمان ثبات المحاذاة
-            >
-              <div className="flex-1 flex flex-col relative w-full">
-                {" "}
-                <input
-                  {...register("email", {
-                    required: "* البريد الإلكتروني مطلوب",
-                    pattern: {
-                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                      message: "* عنوان بريد إلكتروني غير صالح",
-                    },
-                  })}
-                  placeholder="أدخل بريدك الإلكتروني"
-                  className={`w-full px-5 py-4 rounded-xl bg-[#0a0a0a] border ${errors.email ? "border-red-500" : "border-[#262626]"} focus:outline-none focus:border-orange-500/50 text-white placeholder-neutral-500 transition-colors`}
-                  type="email"
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-right text-sm absolute -bottom-6 right-2">
-                    {errors.email.message}
-                  </p>
-                )}
-              </div>
-
+            <SubmitForm className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-10 items-start">
               <SharedButton
                 className="btn-primary hover:from-orange-600 hover:to-orange-700 rounded-2xl h-14.5 sm:w-auto w-full"
                 type="submit"
               >
                 اشترك الآن
               </SharedButton>
-            </form>
+            </SubmitForm>
+
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-neutral-500">
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-2 space-x-reverse">
