@@ -1,6 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
+import BlogList from "./Components/BlogList/BlogList";
 import Layout from "./Components/Layout/Layout";
+import MainSection from "./Components/MainSection/MainSection";
 import Blog from "./Pages/Blog/Blog";
 import BlogDetails from "./Pages/BlogDetails/BlogDetails";
 import Home from "./Pages/Home/Home";
@@ -15,7 +17,22 @@ function App() {
         {
           path: "blog",
           element: <Blog />,
-          children: [{ path: ":slug", element: <BlogDetails /> }],
+          children: [
+            {
+              index: true,
+              element: (
+                <>
+                  <MainSection
+                    sectionLabel="مدونتنا"
+                    heading="استكشف مقالاتنا"
+                    paragraph="اكتشف الدروس والرؤى وأفضل الممارسات للتطوير الحديث"
+                  />
+                  <BlogList />
+                </>
+              ),
+            },
+            { path: ":slug", element: <BlogDetails /> },
+          ],
         },
         { path: "/about", element: <div>من نحن</div> },
         { path: "*", element: <NotFound /> },
