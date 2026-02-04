@@ -320,9 +320,13 @@ export default function BlogDetails({ blog }: { blog: Post[] }) {
                 )
                 .splice(0, 3)
                 .map((relatedBlog) => (
-                  <Link key={relatedBlog.slug} to={`/blog/${relatedBlog.slug}`}>
-                    <div className="group relative bg-[#111111] rounded-2xl overflow-hidden border border-[#262626] hover:border-orange-500/30 transition-all duration-500">
-                      <div className="relative h-48 overflow-hidden">
+                  <Link
+                    key={relatedBlog.slug}
+                    to={`/blog/${relatedBlog.slug}`}
+                    className="h-full flex"
+                  >
+                    <div className="group relative bg-[#111111] rounded-2xl overflow-hidden border border-[#262626] hover:border-orange-500/30 transition-all duration-500 flex flex-col h-full w-full">
+                      <div className="relative h-48 shrink-0 overflow-hidden">
                         <img
                           alt={relatedBlog.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
@@ -333,11 +337,13 @@ export default function BlogDetails({ blog }: { blog: Post[] }) {
                           {relatedBlog.category}
                         </span>
                       </div>
-                      <div className="p-5">
+
+                      <div className="p-5 flex flex-col grow">
                         <h3 className="font-bold text-white group-hover:text-orange-500 transition-colors line-clamp-2 mb-3">
                           {relatedBlog.title}
                         </h3>
-                        <div className="flex items-center justify-between text-sm text-neutral-500">
+
+                        <div className="mt-auto flex items-center justify-between text-sm text-neutral-500">
                           <span className="flex items-center gap-2">
                             <img
                               alt={relatedBlog.author.name}
