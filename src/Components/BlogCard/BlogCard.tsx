@@ -6,7 +6,7 @@ export default function BlogCard({ blog }: { blog: Post }) {
   return (
     <>
       <article
-        key={blog.slug}
+        key={blog.id}
         className="group transition-all duration-500 ease-in-out rounded-3xl bg-[#161616] border border-[#262626] overflow-hidden hover:border-orange-500/30 hover:-translate-y-1"
       >
         <Link className="block" to={`/blog/${blog.slug}`}>
