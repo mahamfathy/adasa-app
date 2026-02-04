@@ -1,17 +1,8 @@
 import { Link } from "react-router-dom";
 import type { Data, Post } from "../../Interfaces/data.interface";
+import formatDate from "../../Utils/formatDate";
 import SectionLabel from "../SectionLabel/SectionLabel";
-
 export default function NewestBlogsSection({ data }: { data: Data["posts"] }) {
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("ar-EG", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-  };
-
   const sortDate = [...data].sort((a: Post, b: Post) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
