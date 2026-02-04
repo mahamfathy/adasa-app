@@ -1,15 +1,30 @@
+import { useState } from "react";
 import type { Post } from "../../Interfaces/data.interface";
 import BlogCard from "../BlogCard/BlogCard";
+import Pagination from "../Pagination/Pagination";
 interface BlogProps {
   filteredBlog: Post[];
-  setSearchQuery: (query: string) => void;
-  setActiveCat: (category: string) => void;
+  handleSearchChange: (query: string) => void;
+  handleCatChange: (cat: string) => void;
+  setPage: (num: number) => void;
+  page: number;
+  limit: number;
+  blogsLength: number;
 }
 export default function Blogs({
   filteredBlog,
-  setActiveCat,
-  setSearchQuery,
+  handleSearchChange,
+  handleCatChange,
+  page,
+  setPage,
+  limit = 6,
+  blogsLength,
 }: BlogProps) {
+  const [viewMode, setViewMode] = useState<"grid" | "flex">("grid");
+  const totalPages = Math.ceil(filteredBlog.length / limit);
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + limit;
+  const currentBlogs = filteredBlog.slice(startIndex, endIndex);
   return (
     <section>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-36.5">
@@ -26,7 +41,12 @@ export default function Blogs({
           <div className="flex items-center gap-2">
             <div className="flex items-center bg-[#161616] border border-[#262626] rounded-xl p-1">
               <button
-                className="p-2 rounded-lg transition-all duration-300 bg-orange-500 text-white"
+                onClick={() => setViewMode("grid")}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  viewMode === "grid"
+                    ? "bg-orange-500 text-white"
+                    : "text-neutral-400 hover:text-white"
+                }`}
                 title="عرض شبكي"
               >
                 <svg
@@ -43,8 +63,14 @@ export default function Blogs({
                   />
                 </svg>
               </button>
+
               <button
-                className="p-2 rounded-lg transition-all duration-300 text-neutral-400 hover:text-white"
+                onClick={() => setViewMode("flex")}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  viewMode === "flex"
+                    ? "bg-orange-500 text-white"
+                    : "text-neutral-400 hover:text-white"
+                }`}
                 title="عرض قائمة"
               >
                 <svg
@@ -62,33 +88,41 @@ export default function Blogs({
                 </svg>
               </button>
             </div>
-            <button
-              onClick={() => {
-                setActiveCat("جميع المقالات");
-                setSearchQuery("");
-              }}
-              className="text-sm text-neutral-500 hover:text-orange-500 flex items-center gap-1 transition-colors"
-            >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            {filteredBlog.length !== blogsLength && (
+              <button
+                onClick={() => {
+                  handleCatChange("جميع المقالات");
+                  handleSearchChange("");
+                }}
+                className={` cursor-pointer text-sm text-neutral-500 hover:text-orange-500 flex items-center gap-1 transition-colors`}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-              مسح الفلاتر
-            </button>
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+                مسح الفلاتر
+              </button>
+            )}
           </div>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredBlog.map((blog) => (
-            <BlogCard blog={blog} key={blog.id} />
+        <div
+          className={
+            viewMode === "grid"
+              ? "grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+              : "flex flex-col gap-6"
+          }
+        >
+          {currentBlogs.map((blog) => (
+            <BlogCard viewMode={viewMode} blog={blog} key={blog.id} />
           ))}
         </div>
         {filteredBlog.length === 0 && (
@@ -116,8 +150,8 @@ export default function Blogs({
             </p>
             <button
               onClick={() => {
-                setSearchQuery("");
-                setActiveCat("جميع المقالات");
+                handleCatChange("جميع المقالات");
+                handleSearchChange("");
               }}
               className="btn-primary inline-flex items-center gap-2"
             >
@@ -138,50 +172,9 @@ export default function Blogs({
             </button>
           </div>
         )}
-        <div className="flex justify-center items-center gap-2 mt-12">
-          <button
-            disabled
-            className="p-3 rounded-xl border transition-all duration-300 bg-[#0a0a0a] border-[#262626] text-neutral-600 cursor-not-allowed"
-          >
-            <svg
-              className="w-5 h-5 rotate-180"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-          <div className="flex items-center gap-1">
-            <button className="min-w-11 h-11 rounded-xl text-sm font-medium transition-all duration-300 bg-linear-to-r from-orange-500 to-orange-600 text-white">
-              1
-            </button>
-            <button className="min-w-11 h-11 rounded-xl text-sm font-medium transition-all duration-300 bg-[#161616] text-neutral-400 border border-[#262626] hover:border-orange-500/50 hover:text-white">
-              2
-            </button>
-          </div>
-          <button className="p-3 rounded-xl border transition-all duration-300 bg-[#161616] border-[#262626] text-white hover:border-orange-500/50 hover:bg-[#1a1a1a]">
-            <svg
-              className="w-5 h-5 rotate-180"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-        </div>
-        <p className="text-center text-neutral-500 mt-4 text-sm">صفحة 1 من 2</p>
+        {totalPages > 0 && (
+          <Pagination page={page} setPage={setPage} totalPages={totalPages} />
+        )}
       </div>
     </section>
   );
