@@ -1,9 +1,18 @@
-import { useState } from "react";
 import type { Category, Data } from "../../Interfaces/data.interface";
-
-export default function FilterSection({ data }: { data: Data }) {
-  const [activeCat, setActiveCat] = useState("جميع المقالات");
-  console.log(data);
+interface FilterProps {
+  data: Data;
+  activeCat: string;
+  searchQuery: string;
+  setActiveCat: (category: string) => void;
+  setSearchQuery: (query: string) => void;
+}
+export default function FilterSection({
+  data,
+  activeCat,
+  searchQuery,
+  setActiveCat,
+  setSearchQuery,
+}: FilterProps) {
   return (
     <>
       <div className="sticky top-20 z-40 bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-[#262626]">
@@ -14,8 +23,8 @@ export default function FilterSection({ data }: { data: Data }) {
                 placeholder="ابحث في المقالات..."
                 className="bg-[#161616] rounded-2xl w-full px-5 py-3 pr-12 focus:border-orange-500 outline-none focus:outline-none focus:ring-1 focus:ring-orange-500"
                 type="text"
-                onInput={(e) => console.log(e.currentTarget.value)}
-                defaultValue=""
+                onChange={(e) => setSearchQuery(e.target.value)}
+                value={searchQuery}
               />
               <svg
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-500"
