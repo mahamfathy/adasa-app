@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import type { Data } from "../../Interfaces/data.interface";
+import formatDate from "../../Utils/formatDate";
 
 export default function FeaturedListCard({ data }: { data: Data["posts"] }) {
   const featuredPosts = data?.filter((blog) => blog.featured);
@@ -68,7 +69,7 @@ export default function FeaturedListCard({ data }: { data: Data["posts"] }) {
                             {blog.author?.name}
                           </p>
                           <p className="text-xs text-neutral-500">
-                            {blog.date}
+                            {formatDate(blog.date)}
                           </p>
                         </div>
                       </div>
