@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { FaFolderOpen, FaNewspaper, FaPenNib, FaUsers } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
-import blogData from "../../../data.json";
 import CategoriesSection from "../../Components/CategoriesSection.tsx/CategoriesSection";
 import FeaturedBlogs from "../../Components/FeaturedBlogsSection/FeaturedBlogsSection";
 import FeaturedListCard from "../../Components/FeaturedListCard/FeaturedListCard";
@@ -10,8 +8,7 @@ import MainSection from "../../Components/MainSection/MainSection";
 import NewestBlogsSection from "../../Components/NewestBlogsSection/NewestBlogsSection";
 import NewsSubscribtionSection from "../../Components/NewsSubscribtionSection/NewsSubscribtionSection";
 import type { Data } from "../../Interfaces/data.interface";
-export default function Home() {
-  const [data] = useState(blogData as Data);
+export default function Home({ data }: { data: Data }) {
   return (
     <>
       <MainSection
