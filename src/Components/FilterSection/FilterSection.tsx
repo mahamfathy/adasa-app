@@ -1,26 +1,18 @@
-import { useEffect } from "react";
 import type { Category, Data } from "../../Interfaces/data.interface";
 interface FilterProps {
   data: Data;
   activeCat: string;
   searchQuery: string;
-  setActiveCat: (category: string) => void;
-  setSearchQuery: (query: string) => void;
+  handleCatChange: (category: string) => void;
+  handleSearchChange: (query: string) => void;
 }
 export default function FilterSection({
   data,
   activeCat,
   searchQuery,
-  setActiveCat,
-  setSearchQuery,
+  handleSearchChange,
+  handleCatChange,
 }: FilterProps) {
-  useEffect(() => {
-    window.scrollTo({
-      top: 570,
-      left: 0,
-      behavior: "smooth",
-    });
-  }, [activeCat]);
   return (
     <>
       <div className="sticky top-20 z-40 bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-[#262626]">
@@ -31,7 +23,7 @@ export default function FilterSection({
                 placeholder="ابحث في المقالات..."
                 className="bg-[#161616] rounded-2xl w-full px-5 py-3 pr-12 focus:border-orange-500 outline-none focus:outline-none focus:ring-1 focus:ring-orange-500"
                 type="text"
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
                 value={searchQuery}
               />
               <svg
@@ -56,7 +48,7 @@ export default function FilterSection({
                 <button
                   type="button"
                   key={catName}
-                  onClick={() => setActiveCat(catName)}
+                  onClick={() => handleCatChange(catName)}
                   className={`cursor-pointer px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 border
   ${
     activeCat === catName
