@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { Category, Data } from "../../Interfaces/data.interface";
 interface FilterProps {
   data: Data;
@@ -13,6 +14,13 @@ export default function FilterSection({
   setActiveCat,
   setSearchQuery,
 }: FilterProps) {
+  useEffect(() => {
+    window.scrollTo({
+      top: 570,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [activeCat]);
   return (
     <>
       <div className="sticky top-20 z-40 bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-[#262626]">
