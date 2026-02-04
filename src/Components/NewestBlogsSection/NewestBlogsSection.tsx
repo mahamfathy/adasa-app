@@ -44,7 +44,7 @@ export default function NewestBlogsSection({ data }: { data: Data["posts"] }) {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {sortDate.slice(0, 3).map((blog: Post) => (
-            <BlogCard blog={blog} />
+            <BlogCard key={blog.id} blog={blog} />
           ))}
         </div>
       </div>
