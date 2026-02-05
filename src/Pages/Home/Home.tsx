@@ -1,6 +1,6 @@
 import { FaFolderOpen, FaNewspaper, FaPenNib, FaUsers } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
-import CategoriesSection from "../../Components/CategoriesSection.tsx/CategoriesSection";
+import CategoriesSection from "../../Components/CategoriesSection/CategoriesSection";
 import FeaturedBlogs from "../../Components/FeaturedBlogsSection/FeaturedBlogsSection";
 import FeaturedListCard from "../../Components/FeaturedListCard/FeaturedListCard";
 import GlassCard from "../../Components/GlassCard/GlassCard";
