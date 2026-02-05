@@ -43,7 +43,7 @@ export default function Blogs({
             <div className="flex items-center bg-[#161616] border border-[#262626] rounded-xl p-1">
               <button
                 onClick={() => setViewMode("grid")}
-                className={`p-2 rounded-lg transition-all duration-300 ${
+                className={`cursor-pointer p-2 rounded-lg transition-all duration-300 ${
                   viewMode === "grid"
                     ? "bg-orange-500 text-white"
                     : "text-neutral-400 hover:text-white"
@@ -67,7 +67,7 @@ export default function Blogs({
 
               <button
                 onClick={() => setViewMode("flex")}
-                className={`p-2 rounded-lg transition-all duration-300 ${
+                className={`cursor-pointer p-2 rounded-lg transition-all duration-300 ${
                   viewMode === "flex"
                     ? "bg-orange-500 text-white"
                     : "text-neutral-400 hover:text-white"
