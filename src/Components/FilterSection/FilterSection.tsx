@@ -20,6 +20,7 @@ export default function FilterSection({
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="relative w-full md:w-80">
               <input
+                id="search-input"
                 placeholder="ابحث في المقالات..."
                 className="bg-[#161616] rounded-2xl w-full px-5 py-3 pr-12 focus:border-orange-500 outline-none focus:outline-none focus:ring-1 focus:ring-orange-500"
                 type="text"
