@@ -207,7 +207,7 @@ export default function BlogDetails() {
                 <div className="flex flex-wrap gap-2">
                   {blogData?.tags.map((tag, id) => (
                     <span
-                      key={`${id}`}
+                      key={id}
                       className="px-4 py-2 bg-[#1a1a1a] text-neutral-400 text-sm rounded-full border border-[#262626] hover:border-orange-500/50 hover:text-orange-500 transition-colors cursor-pointer"
                     >
                       #{tag}
