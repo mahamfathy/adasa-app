@@ -13,6 +13,7 @@ import Home from "./Pages/Home/Home";
 import NotFound from "./Pages/NotFound/NotFound";
 import Privacy from "./Pages/Privacy/Privacy";
 import Terms from "./Pages/Terms/Terms";
+
 function App() {
   const [data] = useState<Data>(blogData);
   const routes = createBrowserRouter([
