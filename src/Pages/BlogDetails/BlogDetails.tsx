@@ -153,6 +153,24 @@ export default function BlogDetails() {
                   {blogData?.content}
                 </ReactMarkdown>
               </div>
+              <div className="mt-14 p-6 bg-[#111111] rounded-2xl border border-[#262626]">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-orange-500/10 rounded-xl flex items-center justify-center border border-orange-500/30">
+                    <FaTags className=" text-orange-500" />
+                  </div>
+                  <h3 className="font-bold text-white">الوسوم</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {blogData?.tags.map((tag, id) => (
+                    <span
+                      key={id}
+                      className="px-4 py-2 bg-[#1a1a1a] text-neutral-400 text-sm rounded-full border border-[#262626] hover:border-orange-500/50 hover:text-orange-500 transition-colors cursor-pointer"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
               <div className="mt-6 p-6 bg-[#111111] rounded-2xl border border-[#262626]">
                 <div className="flex items-center justify-between flex-wrap gap-4">
                   <div className="flex items-center gap-3">
@@ -197,24 +215,7 @@ export default function BlogDetails() {
                   </div>
                 </div>
               </div>
-              <div className="mt-14 p-6 bg-[#111111] rounded-2xl border border-[#262626]">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-orange-500/10 rounded-xl flex items-center justify-center border border-orange-500/30">
-                    <FaTags className=" text-orange-500" />
-                  </div>
-                  <h3 className="font-bold text-white">الوسوم</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {blogData?.tags.map((tag, id) => (
-                    <span
-                      key={id}
-                      className="px-4 py-2 bg-[#1a1a1a] text-neutral-400 text-sm rounded-full border border-[#262626] hover:border-orange-500/50 hover:text-orange-500 transition-colors cursor-pointer"
-                    >
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
+
               <div className="mt-6 p-8 bg-linear-to-br from-[#161616] to-[#111111] rounded-2xl border border-[#262626]">
                 <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                   <img
