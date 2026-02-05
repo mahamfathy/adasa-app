@@ -1,3 +1,7 @@
+import { useContext } from "react";
+import { dataContext } from "../../context/dataContext";
+
 export default function AuthorCard() {
-  return <div>AuthorCard</div>;
+  const data = useContext(dataContext);
+  return <></>;
 }
