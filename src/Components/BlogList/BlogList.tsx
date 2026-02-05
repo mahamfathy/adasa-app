@@ -6,11 +6,10 @@ import FilterSection from "../FilterSection/FilterSection";
 
 export default function BlogList({ data }: { data: Data }) {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
+  const [searchQuery, setSearchQuery] = useState<string>("");
 
   const activeCat = searchParams.get("category") || "جميع المقالات";
-
   const filteredBlog = data.posts.filter((blog) => {
     const matchedCat =
       activeCat === "جميع المقالات" || blog.category === activeCat;
