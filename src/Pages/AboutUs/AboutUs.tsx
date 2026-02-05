@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { FaBookOpen, FaNewspaper, FaPenNib, FaUsers } from "react-icons/fa6";
+import AuthorsSection from "../../Components/AuthorsSection/AuthorsSection";
 import GlassCard from "../../Components/GlassCard/GlassCard";
 import MainSection from "../../Components/MainSection/MainSection";
 import ValuesSection from "../../Components/ValuesSection/ValuesSection";
@@ -48,6 +49,7 @@ export default function AboutUs() {
         </div>
       </MainSection>
       <ValuesSection />
+      <AuthorsSection />
     </>
   );
 }
