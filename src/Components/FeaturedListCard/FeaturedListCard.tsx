@@ -1,17 +1,16 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { dataContext } from "../../context/dataContext";
-import type { Data } from "../../Interfaces/data.interface";
 import formatDate from "../../Utils/formatDate";
 
 export default function FeaturedListCard() {
-  const data = useContext(dataContext) as Data;
-  const featuredPosts = data.posts.filter((blog) => blog.featured);
+  const data = useContext(dataContext);
+  const featuredPosts = data?.posts.filter((blog) => blog.featured);
   return (
     <>
       {
         <div className="flex flex-col gap-10">
-          {featuredPosts.map((blog) => (
+          {featuredPosts?.map((blog) => (
             <article
               key={blog.id}
               className="group relative bg-[#161616] rounded-3xl overflow-hidden border border-[#262626] hover:border-orange-500/30 transition-all duration-500"

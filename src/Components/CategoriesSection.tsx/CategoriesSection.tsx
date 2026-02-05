@@ -1,12 +1,11 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { dataContext } from "../../context/dataContext";
-import type { Data } from "../../Interfaces/data.interface";
 import getCategoryIcon from "../../Utils/getCategoryIcon";
 import SectionLabel from "../SectionLabel/SectionLabel";
 
 export default function CategoriesSection() {
-  const data = useContext(dataContext) as Data;
+  const data = useContext(dataContext);
   return (
     <>
       <section className="py-24 bg-[#111111] relative border-y border-[#262626]">
@@ -21,7 +20,7 @@ export default function CategoriesSection() {
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {data.categories.map((category) => (
+            {data?.categories.map((category) => (
               <NavLink
                 key={category.name}
                 className="group relative block p-6 rounded-2xl bg-[#161616] border border-[#262626] overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-1"

@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { dataContext } from "../../context/dataContext";
-import type { Author, Data } from "../../Interfaces/data.interface";
+import type { Author } from "../../Interfaces/data.interface";
 import SharedButton from "../SharedButton/SharedButton";
 import SubmitForm from "../SharedSubmitForm/SharedSubmitForm";
 
 export default function NewsSubscribtionSection() {
-  const data = useContext(dataContext) as Data;
-  const author = data.posts.map((blog) => blog.author);
+  const data = useContext(dataContext);
+  const author = data?.posts.map((blog) => blog.author);
   return (
     <>
       <section className="py-24 relative overflow-hidden bg-[#0a0a0a]">
@@ -47,7 +47,7 @@ export default function NewsSubscribtionSection() {
             <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-neutral-500">
               <div className="flex items-center gap-4">
                 <div className="flex -space-x-2 space-x-reverse">
-                  {author.slice(0, 3).map((author: Author) => (
+                  {author?.slice(0, 3).map((author: Author) => (
                     <img
                       key={author.avatar}
                       className="w-8 h-8 rounded-full border-2 border-[#161616]"

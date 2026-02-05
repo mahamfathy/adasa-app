@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { dataContext } from "../../context/dataContext";
-import type { Data, Post } from "../../Interfaces/data.interface";
+import type { Post } from "../../Interfaces/data.interface";
 import BlogCard from "../BlogCard/BlogCard";
 import Pagination from "../Pagination/Pagination";
 interface BlogProps {
@@ -19,8 +19,8 @@ export default function Blogs({
   setPage,
   limit = 6,
 }: BlogProps) {
-  const data = useContext(dataContext) as Data;
-  const blogsLength = data.posts.length;
+  const data = useContext(dataContext);
+  const blogsLength = data?.posts.length;
   const [viewMode, setViewMode] = useState<"grid" | "flex">("grid");
   const totalPages = Math.ceil(filteredBlog.length / limit);
   const startIndex = (page - 1) * limit;
