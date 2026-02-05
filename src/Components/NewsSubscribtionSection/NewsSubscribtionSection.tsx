@@ -35,7 +35,7 @@ export default function NewsSubscribtionSection() {
               احصل على نصائح التصوير الحصرية ودروس جديدة مباشرة في بريدك
               الإلكتروني
             </p>
-            <SubmitForm className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-10 items-start">
+            <SubmitForm className="flex flex-col  sm:flex-row gap-9 mb-10 max-w-lg mx-auto items-start">
               <SharedButton
                 className="btn-primary hover:from-orange-600 hover:to-orange-700 rounded-2xl h-14.5 sm:w-auto w-full"
                 type="submit"

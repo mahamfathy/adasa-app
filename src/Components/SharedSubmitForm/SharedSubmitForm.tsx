@@ -39,11 +39,11 @@ export default function SubmitForm({
               },
             })}
             placeholder="أدخل بريدك الإلكتروني"
-            className={`w-full px-5 py-4 rounded-xl bg-[#0a0a0a] border ${errors.email ? "border-red-500" : "border-[#262626]"} focus:outline-none focus:border-orange-500/50 text-white placeholder-neutral-500 transition-colors`}
+            className={` w-full px-5 py-4 rounded-xl bg-[#0a0a0a] border ${errors.email ? "border-red-500" : "border-[#262626]"} focus:outline-none focus:border-orange-500/50 text-white placeholder-neutral-500 transition-colors`}
             type="email"
           />
           {errors.email && (
-            <p className="text-red-500 text-right text-sm absolute -bottom-6 right-2">
+            <p className=" text-red-500 text-right text-sm absolute -bottom-6 right-2">
               {errors.email.message}
             </p>
           )}
