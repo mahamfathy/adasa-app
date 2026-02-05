@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { dataContext } from "../../context/dataContext";
 import type { Data, Post } from "../../Interfaces/data.interface";
 import BlogCard from "../BlogCard/BlogCard";
 import SectionLabel from "../SectionLabel/SectionLabel";
-export default function NewestBlogsSection({ data }: { data: Data["posts"] }) {
-  const sortDate = [...data].sort((a: Post, b: Post) => {
+export default function NewestBlogsSection() {
+  const data = useContext(dataContext) as Data;
+  const sortDate = [...data.posts].sort((a: Post, b: Post) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 

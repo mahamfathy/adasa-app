@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { dataContext } from "../../context/dataContext";
 import type { Data } from "../../Interfaces/data.interface";
 import Blogs from "../Blogs/Blogs";
 import FilterSection from "../FilterSection/FilterSection";
 
-export default function BlogList({ data }: { data: Data }) {
+export default function BlogList() {
+  const data = useContext(dataContext) as Data;
   const [searchParams, setSearchParams] = useSearchParams();
   const [page, setPage] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -41,7 +43,6 @@ export default function BlogList({ data }: { data: Data }) {
         handleSearchChange={handleSearchChange}
         activeCat={activeCat}
         handleCatChange={handleCatChange}
-        data={data}
         searchQuery={searchQuery}
       />
       <Blogs
@@ -51,7 +52,6 @@ export default function BlogList({ data }: { data: Data }) {
         handleCatChange={handleCatChange}
         page={page}
         limit={6}
-        blogsLength={data.posts.length}
       />
     </>
   );

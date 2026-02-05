@@ -1,13 +1,12 @@
+import { useContext } from "react";
+import { dataContext } from "../../context/dataContext";
 import type { Author, Data } from "../../Interfaces/data.interface";
 import SharedButton from "../SharedButton/SharedButton";
 import SubmitForm from "../SharedSubmitForm/SharedSubmitForm";
 
-export default function NewsSubscribtionSection({
-  data,
-}: {
-  data: Data["posts"];
-}) {
-  const author = data.map((blog) => blog.author);
+export default function NewsSubscribtionSection() {
+  const data = useContext(dataContext) as Data;
+  const author = data.posts.map((blog) => blog.author);
   return (
     <>
       <section className="py-24 relative overflow-hidden bg-[#0a0a0a]">

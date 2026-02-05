@@ -1,9 +1,13 @@
+import { useContext } from "react";
 import { FaBookOpen, FaNewspaper, FaPenNib, FaUsers } from "react-icons/fa6";
-import data from "../../../data.json";
 import GlassCard from "../../Components/GlassCard/GlassCard";
 import MainSection from "../../Components/MainSection/MainSection";
 import ValuesSection from "../../Components/ValuesSection/ValuesSection";
+import { dataContext } from "../../context/dataContext";
+import type { Data } from "../../Interfaces/data.interface";
 export default function AboutUs() {
+  const data = useContext(dataContext) as Data;
+
   return (
     <>
       <MainSection

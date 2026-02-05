@@ -1,6 +1,9 @@
 import type React from "react";
 import { Link, NavLink } from "react-router-dom";
-import data from "../../../data.json";
+
+import { useContext } from "react";
+import { dataContext } from "../../context/dataContext";
+import type { Data } from "../../Interfaces/data.interface";
 import RenderNavLinks from "../RenderNavLinks/RenderNavLinks";
 import SharedButton from "../SharedButton/SharedButton";
 import SharedSubmitForm from "../SharedSubmitForm/SharedSubmitForm";
@@ -12,6 +15,7 @@ interface Category {
 }
 
 export default function Footer() {
+  const data = useContext(dataContext) as Data;
   const categories = data.categories;
   const exploreLinks = [
     { name: "الرئيسية", path: "/" },

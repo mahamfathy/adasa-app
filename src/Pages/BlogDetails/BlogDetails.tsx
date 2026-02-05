@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import {
   FaArrowLeft,
   FaChevronLeft,
@@ -16,12 +16,14 @@ import {
 } from "react-icons/fa6";
 import ReactMarkdown from "react-markdown";
 import { Link, useParams } from "react-router-dom";
-import type { Post } from "../../Interfaces/data.interface";
+import type { Data, Post } from "../../Interfaces/data.interface";
 import formatDate from "../../Utils/formatDate";
 import getCategoryIcon from "../../Utils/getCategoryIcon";
-export default function BlogDetails({ blog }: { blog: Post[] }) {
+import { dataContext } from "../../context/dataContext";
+export default function BlogDetails() {
+  const data = useContext(dataContext) as Data;
   const { slug } = useParams();
-  const blogData = blog.find((blog: Post) => blog.slug === slug);
+  const blogData = data.posts.find((blog: Post) => blog.slug === slug);
   const sections = blogData?.content
     .split("\n")
     .filter((line) => line.startsWith("##"))
@@ -312,7 +314,7 @@ export default function BlogDetails({ blog }: { blog: Post[] }) {
               </Link>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {blog
+              {data.posts
                 .filter(
                   (blog) =>
                     blog.category === blogData?.category &&

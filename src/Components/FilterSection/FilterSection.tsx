@@ -1,18 +1,19 @@
+import { useContext } from "react";
+import { dataContext } from "../../context/dataContext";
 import type { Category, Data } from "../../Interfaces/data.interface";
 interface FilterProps {
-  data: Data;
   activeCat: string;
   searchQuery: string;
   handleCatChange: (category: string) => void;
   handleSearchChange: (query: string) => void;
 }
 export default function FilterSection({
-  data,
   activeCat,
   searchQuery,
   handleSearchChange,
   handleCatChange,
 }: FilterProps) {
+  const data = useContext(dataContext) as Data;
   return (
     <>
       <div className="sticky top-20 z-40 bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-[#262626]">

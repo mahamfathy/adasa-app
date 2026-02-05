@@ -7,8 +7,7 @@ import GlassCard from "../../Components/GlassCard/GlassCard";
 import MainSection from "../../Components/MainSection/MainSection";
 import NewestBlogsSection from "../../Components/NewestBlogsSection/NewestBlogsSection";
 import NewsSubscribtionSection from "../../Components/NewsSubscribtionSection/NewsSubscribtionSection";
-import type { Data } from "../../Interfaces/data.interface";
-export default function Home({ data }: { data: Data }) {
+export default function Home() {
   return (
     <>
       <MainSection
@@ -84,11 +83,11 @@ export default function Home({ data }: { data: Data }) {
         </div>
       </MainSection>
       <FeaturedBlogs>
-        <FeaturedListCard data={data.posts} />
+        <FeaturedListCard />
       </FeaturedBlogs>
-      <CategoriesSection data={data.categories} />
-      <NewestBlogsSection data={data.posts} />
-      <NewsSubscribtionSection data={data.posts} />
+      <CategoriesSection />
+      <NewestBlogsSection />
+      <NewsSubscribtionSection />
     </>
   );
 }
